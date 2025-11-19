@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Homepage</title>
+    <script src="/scripts.js" defer></script>
+  </head>
+  <body>
+    <form action="/positions/new" method="POST">
+      <label for="itemName">Название должности:</label>
+      <input type="text" name="item" id="itemName">
+      <button type="submit">Submit</button>
+    </form>
+
+    <% if (error) { %>
+      <p><%= error %></p>
+    <% } %>
+    
+    <% if (items && items.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <% for (const key of Object.keys(items[0])) { %>
+              <th><%= key.charAt(0).toUpperCase() + key.slice(1) %></th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach((item) => { %>
+            <tr>
+              <% for (const key of Object.keys(item)) { %>
+                <td><%= item[key] %></td>
+              <% } %>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn" data-id="<%= item.id %>">Delete</button>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p class="no-data">No items found.</p>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model positions {
+  id   Int    @id(map: "position_pkey") @default(autoincrement())
+  name String @unique(map: "position_name_key") @db.VarChar(100)
+}
