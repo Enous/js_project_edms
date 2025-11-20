@@ -4,11 +4,13 @@
     <script src="/scripts.js" defer></script>
   </head>
   <body>
-    <form action="/positions/new" method="POST">
-      <label for="itemName">Название должности:</label>
-      <input type="text" name="item" id="itemName">
-      <button type="submit">Submit</button>
-    </form>
+    <dialog class="modal">
+      <form action="/positions/new" method="POST">
+        <label for="itemName">Название должности:</label>
+        <input type="text" name="item" id="itemName">
+        <button type="submit">Submit</button>
+      </form>
+    </dialog>
 
     <% if (error) { %>
       <p><%= error %></p>
@@ -30,8 +32,8 @@
                 <td><%= item[key] %></td>
               <% } %>
               <td>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn" data-id="<%= item.id %>">Delete</button>
+                <button class="edit-btn">Редактировать</button>
+                <button class="delete-btn" data-id="<%= item.id %>">Удалить</button>
               </td>
             </tr>
           <% }); %>
@@ -40,5 +42,9 @@
     <% } else { %>
       <p class="no-data">No items found.</p>
     <% } %>
+
+    <div>
+      <button class="create-btn">Создать</button>
+    </div>
   </body>
 </html>
