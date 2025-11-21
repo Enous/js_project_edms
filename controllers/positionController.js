@@ -30,7 +30,7 @@ async function positionPost(req, res) {
     let errorParam = null;
     console.log(error.code);
     if (error.name === 'SequelizeUniqueConstraintError') {
-      errorParam = ERROR_TYPES.POSITION_EXISTS;
+      errorParam = ERROR_TYPES.VALUE_EXISTS;
     }
     else {
       errorParam = ERROR_TYPES.INVALID_FORMAT;
@@ -68,7 +68,7 @@ async function editPositionFormPost(req, res) {
     let errorParam = null;
 
     if (error.name === 'SequelizeUniqueConstraintError') {
-      errorParam = ERROR_TYPES.POSITION_EXISTS;
+      errorParam = ERROR_TYPES.VALUE_EXISTS;
     }
     else {
       errorParam = ERROR_TYPES.INVALID_FORMAT;

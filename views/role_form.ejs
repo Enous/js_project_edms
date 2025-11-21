@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Homepage</title>
+    <script src="/role_script.js" defer></script>
+  </head>
+  <body>
+    <form method="POST">
+      <label for="nameInput">Название роли:</label>
+      <input type="text" value="<%= name || '' %>" name="name" id="nameInput">
+      <button type="submit">Сохранить</button>
+      <% if (error) { %>
+        <p><%= error %></p>
+      <% } %>
+    </form>
+  </body>
+</html>
